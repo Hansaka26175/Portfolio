@@ -1156,9 +1156,9 @@ spline-viewer {
     z-index: 5; 
     position: absolute;
     left: 50%; /* තිරය මැදට ගෙන ඒමට */
-    top: 66%; /* අවශ්‍ය උසකට ගෙන ඒමට */
+    top: 65%; /* අවශ්‍ය උසකට ගෙන ඒමට */
     transform: translate(-50%, -50%); /* නිවැරදි මැදට ගෙන ඒමට */
-    height: 80vh; /* උස අවශ්‍ය පරිදි වෙනස් කරන්න */
+    height: 60vh; /* උස අවශ්‍ය පරිදි වෙනස් කරන්න */
     max-height: 500px;
     width: auto;
     object-fit: contain;
