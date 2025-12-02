@@ -119,7 +119,7 @@ section#home {
     width: 100%;
     height: 100vh;
     background-image: url('fffff.png'); 
-    background-position: -55% top; 
+    background-position: -30% top; 
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
@@ -1145,11 +1145,25 @@ section#home::after {
     }
 
     /* Spline & Desktop Profile Photo Hide */
-    spline-viewer, .profile-photo {
-        display: none !important;
-    }
-
+   /* Spline & Desktop Profile Photo Hide */
+spline-viewer {
+    display: none !important;
+}
     /* --- 2. HOME SECTION --- */
+    /* === PNG Photo (ඔයාගේ රූපය) - Mobile Display Fix === */
+.profile-photo {
+    display: block !important; 
+    z-index: 5; 
+    position: absolute;
+    left: 50%; /* තිරය මැදට ගෙන ඒමට */
+    top: 63%; /* අවශ්‍ය උසකට ගෙන ඒමට */
+    transform: translate(-50%, -50%); /* නිවැරදි මැදට ගෙන ඒමට */
+    height: 80vh; /* උස අවශ්‍ය පරිදි වෙනස් කරන්න */
+    max-height: 500px;
+    width: auto;
+    object-fit: contain;
+    z-index: -1;
+}
     main {
         flex-direction: column;
         justify-content: space-between;
