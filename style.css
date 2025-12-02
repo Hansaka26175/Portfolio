@@ -1,0 +1,1740 @@
+/* =========================================
+   GENERAL SETTINGS
+   ========================================= */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    background-color: #000000;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
+}
+/* =========================================
+   MOBILE MENU ICON (NEW)
+   ========================================= */
+.menu-icon {
+    display: none; /* Desktop වලදී පේන්නෙ නෑ */
+    font-size: 28px;
+    color: #fff;
+    z-index: 1001;
+    cursor: pointer;
+}
+/* =========================================
+   HEADER & NAVIGATION
+   ========================================= */
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: 0;
+    pointer-events: none;
+}
+
+.glass-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    padding: 0 50px;
+    background: rgba(12, 5, 30, 0.427);
+    /* Blur Reduced for Performance */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.297);
+    box-sizing: border-box;
+    opacity: 0;
+    animation: slideDown 1s ease-out 0.5s forwards;
+}
+
+.logo img, 
+.nav-links li a, 
+.contact-btn {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.logo img {
+    height: 70px;
+    width: auto;
+    transition: transform 0.3s ease;
+    position: relative;
+    left: 150px;
+    top: 4px;
+}
+.logo img:hover { transform: scale(1.1); }
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 40px;
+}
+.nav-links li a {
+    text-decoration: none;
+    color: #cccccc;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+.nav-links li a:hover, .nav-links li a.active {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(139, 112, 219, 0.6);
+}
+
+.contact-btn {
+    text-decoration: none;
+    background: linear-gradient(to right, #4a3684, #8b70db);
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
+    position: relative;
+    left: -250px;
+}
+.contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(89, 36, 237, 0.3); 
+    filter: brightness(1.1);
+}
+
+/* =========================================
+   HOME SECTION STYLES
+   ========================================= */
+section#home {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url('fffff.png'); 
+    background-position: -30% top; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    box-sizing: border-box;
+    margin-top: 0; 
+    padding-top: 80px;
+    position: relative;
+    z-index: 10;
+    pointer-events: none;
+    height: 100%;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+    line-height: 0.97;
+    animation: floatAnimation 2s ease-in-out infinite alternate;
+    pointer-events: none; 
+}
+
+.hero-text.left { text-align: left; }
+.hero-text.right { width: 250px; }
+
+.hero-text span {
+    font-size: 24px;
+    font-weight: 400;
+    background: linear-gradient(to right, #4a3684, #8b70db);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-text h1, .hero-text h2 {
+    margin: 0;
+    font-size: 45px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.hero-text .highlight {
+    background: linear-gradient(90deg, #4a3684, #8b70db);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-description {
+    font-size: 14px;
+    color: #cccccc;
+    max-width: 400px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+.cv-button {
+    display: inline-block;
+    pointer-events: auto;
+    margin-top: 25px;
+    padding: 12px 35px;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    background-image: linear-gradient(90deg, #4a3684, #8b70db);
+    transition: all 0.3s ease;
+}
+.cv-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0px 0px 30px 10px rgba(139, 112, 219, 0.2);
+}
+
+/* --- MOBILE DEFAULT: HIDE SPLINE, SHOW PHOTO --- */
+.profile-photo {
+    position: absolute;
+    left: 53%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 110vh;
+    z-index: 5;
+    object-fit: contain;
+    pointer-events: none;
+    display: block; /* Shown on mobile */
+}
+
+spline-viewer {
+    display: none;
+    background-color: transparent !important; /* Hidden on mobile */
+}
+.logo-cover { display: none; }
+
+/* --- DESKTOP (PC) CONFIGURATION (Fixing Lag) --- */
+
+@media (min-width: 1024px) {
+    
+    /* === Spline Viewer (පුටුව) - MANUAL CONTROLS === */
+    spline-viewer {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; 
+        z-index: 1;   
+        
+        pointer-events: none !important;
+
+        /* Logo එක කැපීම (වෙනස් කරන්න එපා) */
+        clip-path: inset(0 0 50px 0);
+        
+        will-change: transform;
+        contain: paint layout;
+
+        transform: scale(1) translate(50px, -40px) !important; 
+        
+        /* FIX: Prevents White Box if crashed or loading */
+        background-color: transparent !important;
+    }
+
+    /* === PNG Photo (ඔයාගේ රූපය) === */
+    .profile-photo {
+        display: block !important; 
+        z-index: 5; /* මේක 5 තියන්න (පුටුවට වඩා උඩින්) */
+        position: absolute;
+        pointer-events: none; 
+    }
+
+    /* === Patch එක අයින් කිරීම === */
+    .logo-cover {
+        display: none !important;
+    }
+}
+
+
+/* =========================================
+   ABOUT SECTION STYLES
+   ========================================= */
+.about-section {
+    position: relative;
+    min-height: 100vh;
+    padding: 100px 5% 100px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background-image: url('sasthara.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #000; 
+}
+
+.about-container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 50px; 
+    width: 100%;
+    max-width: 1300px;
+    z-index: 20;
+}
+
+.about-image-box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 1s ease-out;
+}
+
+.about-img {
+    max-width: 100%;
+    height: auto;
+    max-height: 1000px;
+    object-fit: contain;
+    z-index: -1;
+    
+    
+}
+
+.about-card {
+    flex: 1.2;
+    background: rgba(0, 0, 0, 0.337);
+    backdrop-filter: blur(15px);
+    padding: 60px 50px; 
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ddd;
+    line-height: 1.8;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    position: relative; /* හෝ absolute */
+    top: -55px;
+    transform: translateX(-100px);
+    transition: all 1s ease-out;
+}
+
+.about-card h1 { 
+    color: #8b70db; 
+    font-size: 36px; 
+    font-weight: 600; 
+    margin: 0 0 20px 0; 
+    line-height: 1.2;
+}
+
+.about-card p:last-of-type {
+    margin-bottom: 0;
+}
+
+.about-card .contact-btn {
+    position: static;
+    left: auto;
+    margin-top: 35px;
+    display: inline-block;
+}
+
+/* =========================================
+   PROJECTS SECTION (BLUR + TEXTURE + FADES)
+   ========================================= */
+.projects-section {
+    min-height: 100vh;
+    padding: 100px 5% 50px;
+    background-color: #000; 
+    z-index: 10;
+    
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    overflow: hidden; 
+}
+
+.projects-section::before {
+    content: '';
+    position: absolute;
+    top: -10px; left: -10px; right: -10px; bottom: -10px;
+    background-image: url('sasthara.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px) brightness(0.6);
+    z-index: -1;
+}
+
+.projects-section::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    
+    background-image: 
+        linear-gradient(to bottom, transparent, #000000), 
+        linear-gradient(to bottom, #000 0%, transparent 15%), 
+        radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        
+    background-size: 100% 100%, 100% 100%, 30px 30px;
+    z-index: -1;
+    pointer-events: none; 
+}
+
+.projects-container {
+    max-width: 1300px;
+    width: 100%;
+    text-align: center;
+    z-index: 16; 
+}
+
+.section-title {
+    color: #ffffff;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(139, 112, 219, 0.4);
+}
+
+.category-title {
+    color: #8b70db;
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.project-grid {
+    display: grid;
+    gap: 30px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.ux-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.graphic-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.project-card {
+    background: rgba(12, 5, 30, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+
+    /* Animation States */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
+}
+
+.project-card.show-animation {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.project-card.show-animation:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 15px 35px rgba(139, 112, 219, 0.5);
+}
+
+.project-card:nth-child(1) { transition-delay: 0.1s; }
+.project-card:nth-child(2) { transition-delay: 0.2s; }
+.project-card:nth-child(3) { transition-delay: 0.3s; }
+.project-card:nth-child(4) { transition-delay: 0.4s; }
+.project-card:nth-child(5) { transition-delay: 0.2s; }
+.project-card:nth-child(6) { transition-delay: 0.3s; }
+
+.project-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.ux-card img {
+    height: 250px;
+}
+
+.project-info {
+    padding: 20px;
+    text-align: left;
+}
+
+.project-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.contact-final-btn {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-right: 20px;
+}
+
+.icon-circle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px; 
+    height: 28px;
+    background-color: #ffffff; 
+    border-radius: 50%; 
+    margin-right: 10px; 
+}
+
+.icon-circle .fa-behance {
+    color: #4a3684; 
+    font-size: 16px; 
+}
+
+.contact-final-btn i {
+    margin-right: 0; 
+}
+
+/* =========================================
+   SKILLS SECTION (BLUR + TEXTURE + FADES)
+   ========================================= */
+.skills-section {
+    min-height: 80vh;
+    padding: 50px 5% 100px;
+    background-color: #000;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.skills-section::before {
+    content: '';
+    position: absolute;
+    top: -10px; left: -10px; right: -10px; bottom: -10px;
+    background-image: url('sasthara.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px) brightness(0.6);
+    z-index: -2;
+}
+
+.skills-section::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        linear-gradient(to bottom, #000 0%, transparent 15%), 
+        linear-gradient(to top, #000 0%, transparent 15%),
+        radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        
+    background-size: 100% 100%, 100% 100%, 30px 30px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.skills-container {
+    max-width: 1000px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+
+.skills-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 20px;
+}
+
+.skill-column {
+    width: 100%;
+}
+
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.skill-card {
+    background: rgba(12, 5, 30, 0.5);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    padding: 30px 20px;
+    text-align: center;
+    cursor: default;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.skill-card.show-animation {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.skill-card:hover {
+    background: rgba(139, 112, 219, 0.15);
+    transform: translateY(-10px) !important;
+    border-color: rgba(139, 112, 219, 0.5);
+    box-shadow: 0 0 20px rgba(139, 112, 219, 0.3);
+}
+
+.skill-card:nth-child(1) { transition-delay: 0.1s; }
+.skill-card:nth-child(2) { transition-delay: 0.2s; }
+.skill-card:nth-child(3) { transition-delay: 0.3s; }
+.skill-card:nth-child(4) { transition-delay: 0.4s; }
+
+.skill-card i {
+    font-size: 40px;
+    margin-bottom: 15px;
+    background: linear-gradient(to bottom, #fff, #8b70db);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: transform 0.3s ease;
+}
+
+.adobe-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border: 2px solid #8b70db;
+    border-radius: 8px;
+    color: #8b70db;
+    font-weight: 700;
+    font-size: 24px;
+    margin: 0 auto 15px auto;
+    font-family: sans-serif; 
+    background: rgba(139, 112, 219, 0.1);
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover .adobe-icon {
+    transform: scale(1.1);
+    background: #8b70db;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(139, 112, 219, 0.6);
+}
+
+.skill-card:hover i {
+    transform: scale(1.2);
+}
+
+.skill-card h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #e0e0e0;
+    letter-spacing: 0.5px;
+}
+
+/* =========================================
+   RESPONSIVENESS AND ANIMATIONS
+   ========================================= */
+/* OLD TABLET RESPONSIVE (KEPT AS IS) */
+@media (max-width: 968px) {
+    .about-container {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    .about-image-box, .about-card {
+        flex: auto;
+        width: 100%;
+    }
+    .about-img {
+        max-height: 400px;
+    }
+    .contact-btn {
+        left: 0;
+    }
+    .ux-grid {
+        grid-template-columns: 1fr;
+    }
+    .graphic-grid {
+        grid-template-columns: 1fr;
+    }
+    .graphic-grid .wide {
+        grid-column: span 1;
+    }
+    
+    .skill-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.show-animation {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+}
+
+.text-mask { overflow: hidden; display: block; }
+.text-mask span, .text-mask h1, .text-mask h2, .text-mask .cv-button, .text-mask .hero-description {
+    animation: slideUp 1s forwards cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(100%);
+}
+
+.hero-text.left .text-mask:nth-child(1) span { animation-delay: 0.2s; }
+.hero-text.left .text-mask:nth-child(2) h1  { animation-delay: 0.4s; }
+.hero-text.left .text-mask:nth-child(3) h1  { animation-delay: 0.6s; }
+.hero-text.left .text-mask:nth-child(4) .hero-description { animation-delay: 0.8s; }
+.hero-text.left .text-mask:nth-child(5) .cv-button { animation-delay: 1.0s; }
+.hero-text.left .text-mask:nth-child(5) { animation: reveal-overflow 0.1s 2.0s forwards; }
+
+.hero-text.right .text-mask:nth-child(1) span { animation-delay: 0.8s; }
+.hero-text.right .text-mask:nth-child(2) h2  { animation-delay: 1.0s; }
+.hero-text.right .text-mask:nth-child(3) h2  { animation-delay: 1.2s; }
+
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@keyframes slideDown { from { transform: translateY(-150%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes reveal-overflow { to { overflow: visible; } }
+@keyframes floatAnimation { from { transform: translateY(-5px); } to { transform: translateY(5px); } }
+
+#role-line-2::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  font-weight: 600;
+  background: linear-gradient(90deg, #4a3684, #8b70db);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@keyframes blink { from, to { opacity: 1; } 50% { opacity: 0; } }
+
+.preloader {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #000000; z-index: 9999;
+    transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+}
+.preloader.hidden { opacity: 0; visibility: hidden; }
+
+/* Transitions */
+section#home::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 500px; 
+    background: linear-gradient(to bottom, transparent, #000000);
+    z-index: 9;
+    pointer-events: none;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 250px; 
+    background: linear-gradient(to bottom, #000000, transparent);
+    z-index: 15;
+    pointer-events: none;
+}
+
+.about-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 250px; 
+    background: linear-gradient(to top, #000000, transparent); 
+    z-index: 15;
+    pointer-events: none;
+}
+
+.title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;           
+    margin-bottom: 5px;  
+}
+
+.title-row h3 {
+    margin: 0 !important; 
+    font-size: 18px;
+    color: #8b70db;
+}
+
+.behance-mini-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #d2c3ff;     
+    font-size: 1.4rem;   
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.behance-mini-btn:hover {
+    color: #ffffff;      
+    transform: scale(1.1); 
+    background: rgba(139, 112, 219, 0.2); 
+}
+
+/* =========================================
+   CONTACT SECTION (BLUR + TEXTURE + FADES)
+   ========================================= */
+.contact-section {
+    min-height: 100vh;
+    padding: 100px 5% 50px;
+    background-color: #000;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: -10px; left: -10px; right: -10px; bottom: -10px;
+    background-image: url('sasthara.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px) brightness(0.5);
+    z-index: -2;
+}
+
+.contact-section::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    
+    background-image: 
+        linear-gradient(to bottom, #000 0%, transparent 15%), 
+        radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        
+    background-size: 100% 100%, 30px 30px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.contact-container {
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.contact-subtitle {
+    color: #ccc;
+    font-size: 16px;
+    margin-bottom: 60px;
+    margin-top: -10px;
+}
+
+.contact-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    margin-bottom: 80px;
+    text-align: left;
+}
+
+.contact-info {
+    flex: 1;
+    background: rgba(12, 5, 30, 0.4);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease-out;
+}
+
+.contact-header {
+    color: #8b70db;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.contact-desc {
+    color: #ddd;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    font-size: 15px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.icon-box {
+    width: 50px;
+    height: 50px;
+    background: rgba(139, 112, 219, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8b70db;
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.info-item:hover .icon-box {
+    background: #8b70db;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(139, 112, 219, 0.5);
+}
+
+.info-text span {
+    display: block;
+    font-size: 13px;
+    color: #aaa;
+}
+
+.info-text a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.info-text a:hover { color: #8b70db; }
+
+.social-links-contact {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.social-links-contact a {
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-links-contact a:hover {
+    background: #8b70db;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(139, 112, 219, 0.3);
+}
+
+.contact-form {
+    flex: 1.2;
+    background: rgba(12, 5, 30, 0.6);
+    backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s ease-out;
+
+    display: flex;           
+    flex-direction: column;  
+    justify-content: center; 
+    height: auto;            
+    align-self: stretch;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    
+    box-sizing: border-box; 
+}
+
+.input-group textarea { resize: vertical; }
+
+.input-group label {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    color: #aaa;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    font-size: 15px;
+}
+
+.input-group input:focus, .input-group input:not(:placeholder-shown),
+.input-group textarea:focus, .input-group textarea:not(:placeholder-shown) {
+    border-color: #8b70db;
+    background: rgba(139, 112, 219, 0.05);
+}
+
+.input-group input:focus ~ label, 
+.input-group input:not(:placeholder-shown) ~ label,
+.input-group textarea:focus ~ label, 
+.input-group textarea:not(:placeholder-shown) ~ label {
+    top: -12px;
+    left: 10px;
+    font-size: 12px;
+    background: #000;
+    padding: 0 5px;
+    color: #8b70db;
+    border-radius: 5px;
+}
+
+.submit-btn {
+    width: 100%;
+    cursor: pointer;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.559);
+    padding-top: 20px;
+    color: #ababab;
+    font-size: 14px;
+}
+.footer p {
+    line-height: 0.8; 
+}
+
+.footer i { animation: heartbeat 1.5s infinite; }
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@media (max-width: 900px) {
+    .contact-wrapper {
+        flex-direction: column;
+    }
+    .contact-info, .contact-form {
+        width: 100%;
+        padding: 30px 20px;
+    }
+}
+
+.form-status {
+    width: 100%;
+    font-size: 14px;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    display: none;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.form-status.success {
+    display: block;
+    background: rgba(46, 213, 115, 0.2);
+    border: 1px solid #2ed573;
+    color: #2ed573;
+    animation: fadeIn 0.5s ease;
+}
+
+.form-status.error {
+    display: block;
+    background: rgba(255, 71, 87, 0.2);
+    border: 1px solid #ff4757;
+    color: #ff4757;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVE UPDATES (FINAL FIX)
+   ========================================= */
+
+/* =========================================
+   MOBILE RESPONSIVE UPDATES (FINAL FIX 2.0)
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    /* --- 1. HEADER & NAV --- */
+    .glass-nav {
+        padding: 0 15px; 
+        height: 70px;
+        justify-content: space-between;
+    }
+
+    .logo img {
+        left: 0;
+        height: 45px;
+    }
+
+    .nav-links { display: none; }
+
+    .contact-btn {
+        left: 0;
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+
+    /* Spline & Desktop Profile Photo Hide */
+    spline-viewer, .profile-photo {
+        display: none !important;
+    }
+
+    /* --- 2. HOME SECTION --- */
+    main {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 100px;
+        padding-bottom: 40px;
+        height: 100vh;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 10; 
+    }
+
+    section#home {
+        position: relative;
+        background-image: url('fffff.png'); 
+        background-position: center 80%; 
+        background-size: 200%; 
+        background-repeat: no-repeat;
+        height: 100vh;
+        overflow: visible !important; 
+        z-index: 1;
+    }
+
+    section#home::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        pointer-events: none;
+        background: linear-gradient(to bottom, #000000 0%, #000000 35%, transparent 50%, transparent 75%, #000000 95%, #000000 100%);
+        z-index: 2; 
+    }
+
+    .hero-text.left {
+        width: 100%;
+        text-align: center;
+        margin-bottom: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 5;
+    }
+
+    .hero-text h1 {
+        font-size: 30px;
+        line-height: 1.1;
+        margin-bottom: 5px;
+    }
+    
+    .hero-text span {
+        font-size: 14px;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .hero-description {
+        font-size: 12px;
+        line-height: 1.4;
+        max-width: 85%;
+        margin: 10px auto;
+        background: none !important;
+        backdrop-filter: none !important;
+        border: none !important;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .cv-button {
+        margin-top: 10px;
+        padding: 8px 25px;
+        font-size: 13px;
+    }
+
+    .hero-text.right {
+        width: 100%;
+        text-align: center;
+        margin-top: auto; 
+        position: relative;
+        z-index: 20;
+        top: 19px; 
+        margin-bottom: -20px; 
+    }
+
+    .hero-text.right h2 {
+        font-size: 28px;
+    }
+
+    /* --- 3. OTHER SECTIONS FIXES --- */
+    .about-container, .contact-wrapper {
+        flex-direction: column;
+        padding-top: 40px;
+    }
+    
+    .contact-info, .contact-form {
+        width: 100%;
+        transform: none;
+        padding: 20px;
+    }
+
+    /* --- 4. ABOUT IMAGE FIX --- */
+    .about-image-box {
+        padding: 0 !important; 
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-bottom: 40px !important; 
+        overflow: visible !important;   
+    }
+
+    .about-image-box img {
+        width: 100% !important;       
+        max-width: unset !important;  
+        height: auto !important;
+        transform: scale(1.3);        
+        margin-top: 20px;
+        object-fit: contain !important;
+    }
+
+    /* --- 5. ABOUT CARD TEXT FIX --- */
+    .about-card {
+        width: 100% !important;
+        transform: none;
+        padding: 30px 20px !important; 
+        box-sizing: border-box !important;
+    }
+
+    .about-card p {
+        font-size: 13px !important;
+        line-height: 1.7 !important;
+        color: #dddddd !important;
+    }
+
+    .about-card h1 {
+        font-size: 30px !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* --- 6. CONTACT SECTION FIXES (EMAIL FIX) --- */
+    .contact-container {
+        padding-top: 40px;
+        width: 100%;
+        overflow: hidden; /* පිටතට පැනීම වලක්වන්න */
+    }
+
+    .contact-wrapper {
+        gap: 30px; 
+        width: 100%;
+    }
+
+    .contact-info, .contact-form {
+        padding: 25px 15px !important; 
+        width: 100% !important;
+        box-sizing: border-box; /* Padding නිසා ලොකු වීම වලක්වන්න */
+    }
+
+    /* === EMAIL BREAKING FIX (මෙන්න මේ කොටස තමයි වැදගත්ම) === */
+    .info-item {
+        display: flex;
+        align-items: center; /* හෝ flex-start දාන්න පුළුවන් Icon එක උඩට ගන්න */
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .info-text {
+        flex: 1;          /* ඉතුරු ඉඩ ප්‍රමාණය ගන්න */
+        min-width: 0;     /* Flex container එක ඇතුලේ Text කැඩෙන්න මේක අනිවාර්යයි */
+        padding-right: 10px;
+    }
+
+    .contact-info .info-text span,
+    .contact-info .info-text a {
+        white-space: normal;      /* Text එක දිගටම යන්න නොදී නවත්වන්න */
+        word-break: break-all;    /* අකුරෙන් අකුර හරි කඩන්න (Email එකට) */
+        overflow-wrap: break-word; /* වචන කඩන්න */
+        display: block;           /* Block එකක් විදිහට පෙන්නන්න */
+        line-height: 1.4;
+    }
+    
+    .contact-header {
+        font-size: 28px !important;
+        word-wrap: break-word;
+    }
+
+    .contact-desc {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+    }
+
+    .ux-grid, .graphic-grid, .skill-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title { font-size: 30px; }
+}
+/* =========================================
+   MOBILE MENU STYLES (ADDED)
+   ========================================= */
+
+/* =========================================
+   MOBILE RESPONSIVE & MODERN MENU FIX
+   ========================================= */
+
+/* 1. Menu Icon එක Click කරන්න පුලුවන් විදියට හදමු */
+.menu-icon {
+    display: none;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 2000; /* හැමෝටම උඩින් */
+    pointer-events: auto !important; /* මේක අනිවාර්යයි Click වෙන්න */
+}
+
+@media (max-width: 768px) {
+
+    /* =========================================
+       CLEAN MOBILE HEADER & NAVIGATION (FINAL)
+       ========================================= */
+    header {
+        z-index: 9999 !important; 
+        /* අනවශ්‍ය transforms අයින් කරා */
+        transform: none !important; 
+    }
+    
+    .glass-nav {
+        padding: 0 15px; 
+        height: 70px !important; /* Height lock */
+        min-height: 70px !important; /* Min-Height lock */
+        justify-content: space-between;
+        
+        display: flex;
+        align-items: center; /* Vertical centering lock */
+        flex-shrink: 0; /* Physical size lock */
+
+        /* අනවශ්‍ය transforms අයින් කරා */
+        transform: none !important; 
+        -webkit-transform: none !important;
+        will-change: auto !important;
+    }
+
+    .logo img {
+        left: 0;
+        top: 0 !important; /* Residual top: 4px අයින් කළා */
+        position: static !important; /* Position: relative අයින් කළා */
+        height: 45px;
+    }
+
+    /* පරණ Contact Button එක හංගමු */
+    .contact-btn {
+        display: none !important;
+    }
+
+    /* Menu Icon එක පෙන්නමු */
+    .menu-icon {
+        display: block;
+    }
+    
+    /* --- MODERN FLOATING MENU --- */
+    .nav-links {
+        display: flex;
+        position: absolute; 
+        top: 90px; 
+        right: 20px; 
+        width: 260px; 
+        height: auto; 
+        
+        background: #1b1824; 
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px; 
+        padding: 20px;
+        
+        flex-direction: column;
+        align-items: flex-start; 
+        gap: 10px;
+        z-index: 1000;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); 
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px) scale(0.95);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-links.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+    }
+
+    /* Links Styles */
+    .nav-links li { width: 100%; list-style: none; }
+    .nav-links li a {
+        display: flex;
+        align-items: center;
+        gap: 15px; 
+        font-size: 16px;
+        font-weight: 500;
+        color: #a5a0b0; 
+        text-decoration: none;
+        padding: 12px 20px;
+        border-radius: 16px; 
+        transition: all 0.3s ease;
+        opacity: 1;
+        transform: none;
+    }
+
+    /* Icons style */
+    .nav-links li a i {
+        font-size: 18px;
+        width: 25px;
+        text-align: center;
+    }
+    
+    /* Hover Effect */
+    .nav-links li a:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        transform: translateX(5px);
+    }
+
+    /* ACTIVE STATE */
+    .nav-links li a.active {
+        background-color: #7b4af7; 
+        color: #ffffff;
+        box-shadow: 0 4px 15px rgba(97, 74, 247, 0.3);
+        font-weight: 600;
+    }
+    
+    /* Animation delay අයින් කරා fast වෙන්න */
+    .nav-links.active li:nth-child(n) a {
+        transition-delay: 0s;
+        opacity: 1;
+        transform: none;
+    }
+    
+    /* =========================================
+       PC VIEW ICON REMOVAL (MOBILE BLOCK)
+       ========================================= */
+    .nav-links li a i {
+        font-size: 18px; /* Icons need to be visible on mobile */
+        display: block; 
+    }
+    .nav-links li:last-child {
+        display: list-item; /* Contact link need to be visible on mobile */
+    }
+
+    /* =========================================
+       OTHER SECTIONS (RE-APPLYING STYLES)
+       ========================================= */
+    
+    /* Ensure all main content sections start below the fixed 70px header on mobile */
+    .about-section, .projects-section, .skills-section, .contact-section {
+        padding-top: 100px !important; 
+    }
+
+    /* --- 2. HOME SECTION --- */
+    main {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 100px;
+        padding-bottom: 40px;
+        height: 100vh;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 10; 
+    }
+
+    section#home {
+        position: relative;
+        background-image: url('fffff.png'); 
+        background-position: center 80%; 
+        background-size: 200%; 
+        background-repeat: no-repeat;
+        height: 100vh;
+        overflow: visible !important; 
+        z-index: 1;
+    }
+
+    section#home::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        pointer-events: none;
+        background: linear-gradient(to bottom, #000000 0%, #000000 35%, transparent 50%, transparent 75%, #000000 95%, #000000 100%);
+        z-index: 2; 
+    }
+
+    .hero-text.left {
+        width: 100%;
+        text-align: center;
+        margin-bottom: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 5;
+    }
+
+    .hero-text h1 {
+        font-size: 30px;
+        line-height: 1.1;
+        margin-bottom: 5px;
+    }
+    
+    .hero-text span {
+        font-size: 14px;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .hero-description {
+        font-size: 12px;
+        line-height: 1.4;
+        max-width: 85%;
+        margin: 10px auto;
+        background: none !important;
+        backdrop-filter: none !important;
+        border: none !important;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .cv-button {
+        margin-top: 10px;
+        padding: 8px 25px;
+        font-size: 13px;
+    }
+
+    .hero-text.right {
+        width: 100%;
+        text-align: center;
+        margin-top: auto; 
+        position: relative;
+        z-index: 20;
+        top: 19px; 
+        margin-bottom: -20px; 
+    }
+
+    .hero-text.right h2 {
+        font-size: 28px;
+    }
+
+    /* --- 3. OTHER SECTIONS FIXES --- */
+    .about-container, .contact-wrapper {
+        flex-direction: column;
+        padding-top: 40px;
+    }
+    
+    .contact-info, .contact-form {
+        width: 100%;
+        transform: none;
+        padding: 20px;
+    }
+
+    /* --- 4. ABOUT IMAGE FIX --- */
+    .about-image-box {
+        padding: 0 !important; 
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-bottom: 40px !important; 
+        overflow: visible !important;  
+        margin-top: 50px; 
+    }
+
+    .about-image-box img {
+        width: 100% !important;       
+        max-width: unset !important;  
+        height: auto !important;
+        /* transform: scale(1.3); - REMOVED */
+        margin-top: 20px;
+        object-fit: contain !important;
+        
+    }
+    .about-section {
+        overflow-x: hidden !important; 
+        padding-bottom: 40px !important;
+    }
+    .submit-btn {
+        width: 65%; /* Mobile view එකේදී Button එක 65% දක්වා අඩු කළා */
+        max-width: 250px; /* උපරිම පළල සීමා කළා */
+        margin: 10px auto 0 auto; /* Button එක මැදට ගෙනාවා */
+    }
+   .form-status {
+        font-size: 13px; 
+        padding: 10px 15px; 
+        line-height: 1.4;
+        
+        /* අනිවාර්යයෙන්ම Text එක Box එක ඇතුළේ කැඩීමට සලස්වයි */
+        overflow-wrap: break-word; 
+        word-break: break-word;   
+        box-sizing: border-box; /* Padding නිසා පිටතට නොයන බව තහවුරු කරයි */
+    }
+    .form-status.success,
+    .form-status.error {
+        display: block !important;
+    }
+
+    /* --- 5. ABOUT CARD TEXT FIX --- */
+    .about-card {
+        width: 100% !important;
+        transform: none;
+        padding: 30px 20px !important; 
+        box-sizing: border-box !important;
+        margin-top: 40px;
+    }
+
+    .about-card p {
+        font-size: 13px !important;
+        line-height: 1.7 !important;
+        color: #dddddd !important;
+    }
+
+    .about-card h1 {
+        font-size: 30px !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* --- 6. CONTACT SECTION FIXES (EMAIL FIX) --- */
+    .contact-container {
+        padding-top: 40px;
+        width: 100%;
+        overflow: hidden; /* පිටතට පැනීම වලක්වන්න */
+    }
+
+    .contact-wrapper {
+        gap: 30px; 
+        width: 100%;
+    }
+
+    .contact-info, .contact-form {
+        padding: 25px 15px !important; 
+        width: 100% !important;
+        box-sizing: border-box; /* Padding නිසා ලොකු වීම වලක්වන්න */
+    }
+
+    /* === EMAIL BREAKING FIX (මෙන්න මේ කොටස තමයි වැදගත්ම) === */
+    .info-item {
+        display: flex;
+        align-items: center; /* හෝ flex-start දාන්න පුළුවන් Icon එක උඩට ගන්න */
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .info-text {
+        flex: 1;          /* ඉතුරු ඉඩ ප්‍රමාණය ගන්න */
+        min-width: 0;     /* Flex container එක ඇතුලේ Text කැඩෙන්න මේක අනිවාර්යයි */
+        padding-right: 10px;
+    }
+
+    .contact-info .info-text span,
+    .contact-info .info-text a {
+        white-space: normal;      /* Text එක දිගටම යන්න නොදී නවත්වන්න */
+        word-break: break-all;    /* අකුරෙන් අකුර හරි කඩන්න (Email එකට) */
+        overflow-wrap: break-word; /* වචන කඩන්න */
+        display: block;           /* Block එකක් විදිහට පෙන්නන්න */
+        line-height: 1.4;
+    }
+    
+    .contact-header {
+        font-size: 28px !important;
+        word-wrap: break-word;
+    }
+
+    .contact-desc {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+    }
+
+    .ux-grid, .graphic-grid, .skill-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title { font-size: 30px; }
+}
+
+/* =========================================
+   PC VIEW ICON REMOVAL
+   ========================================= */
+@media (min-width: 769px) {
+    /* PC (Desktop) එකේදි විතරක් Icons හංගන්න */
+    .nav-links li a i {
+        display: none !important;
+    }
+    .nav-links li:last-child {
+        display: none;
+    }
+}
