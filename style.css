@@ -44,7 +44,7 @@ header {
     width: 100%;
     height: 80px;
     padding: 0 50px;
-    background: rgba(30, 5, 5, 0.427);
+    background: rgba(12, 5, 30, 0.427);
     /* Blur Reduced for Performance */
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
