@@ -1,2 +1,149 @@
+// Form Handling
+const contactForm = document.getElementById("contact-form"),
+    formStatus = document.getElementById("form-status");
 
-const roles=[{line1:"UI UX",line2:"Designer"},{line1:"Graphic",line2:"Designer"}],roleLine1=document.getElementById("role-line-1"),roleLine2=document.getElementById("role-line-2");let roleIndex=0;const typingSpeed=100,erasingSpeed=50,pauseDuration=2e3;function type(e,t,n){let s=0;e.textContent="",!function a(){s<t.length?(e.textContent+=t.charAt(s),s++,setTimeout(a,100)):n&&n()}()}function erase(e,t){let n=e.textContent;!function s(){n.length>0?(n=n.slice(0,-1),e.textContent=n,setTimeout(s,50)):t&&t()}()}function animateText(){roleLine1&&roleLine2&&erase(roleLine2,()=>{erase(roleLine1,()=>{roleIndex=(roleIndex+1)%roles.length;let e=roles[roleIndex];type(roleLine1,e.line1,()=>{type(roleLine2,e.line2,()=>{setTimeout(animateText,2e3)})})})})}window.addEventListener("load",()=>{let e=document.querySelector(".preloader");e&&(e.classList.add("hidden"),setTimeout(()=>e.style.display="none",1e3)),setTimeout(animateText,2e3)});const observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting?e.target.classList.add("show-animation"):e.target.classList.remove("show-animation")})}),hiddenElements=document.querySelectorAll(".about-image-box, .about-card, .project-card, .skill-card, .contact-info, .contact-form");hiddenElements.forEach(e=>observer.observe(e));const splinePerformanceObserver=new IntersectionObserver(e=>{e.forEach(e=>{let t=document.getElementById("main-spline");t&&(e.isIntersecting?t.style.visibility="visible":t.style.visibility="hidden")})},{threshold:0}),homeSectionForPerf=document.getElementById("home");homeSectionForPerf&&splinePerformanceObserver.observe(homeSectionForPerf),document.addEventListener("DOMContentLoaded",function(){let e=document.getElementById("contact-form"),t=document.getElementById("form-status");e&&e.addEventListener("submit",async function(n){n.preventDefault();let s=new FormData(n.target),a=e.querySelector(".submit-btn"),i=a.innerHTML;a.innerHTML='Sending... <i class="fa-solid fa-spinner fa-spin"></i>',a.disabled=!0;try{let r=await fetch(n.target.action,{method:e.method,body:s,headers:{Accept:"application/json"}});if(r.ok)t.innerHTML="Thanks! Your message has been sent.",t.className="form-status success",e.reset();else{let l=await r.json();Object.hasOwn(l,"errors")?t.innerHTML=l.errors.map(e=>e.message).join(", "):t.innerHTML="Oops! There was a problem sending your message.",t.className="form-status error"}}catch(o){t.innerHTML="Something went wrong. Please try again.",t.className="form-status error"}finally{a.innerHTML=i,a.disabled=!1,setTimeout(()=>{t.style.display="none",t.className="form-status"},5e3)}})}),document.addEventListener("DOMContentLoaded",()=>{let e=document.getElementById("menu-icon"),t=document.querySelector(".nav-links"),n=document.querySelectorAll(".nav-links li a"),s=e?e.querySelector("i"):null;e&&t&&(e.addEventListener("click",()=>{t.classList.toggle("active"),t.classList.contains("active")?(s.classList.remove("fa-bars"),s.classList.add("fa-xmark")):(s.classList.remove("fa-xmark"),s.classList.add("fa-bars"))}),n.forEach(e=>{e.addEventListener("click",()=>{t.classList.remove("active"),s&&(s.classList.remove("fa-xmark"),s.classList.add("fa-bars"))})}))});const navLinksItems=document.querySelectorAll(".nav-links li a");navLinksItems.forEach(e=>{e.addEventListener("click",function(){navLinksItems.forEach(e=>e.classList.remove("active")),this.classList.add("active");let e=document.querySelector(".nav-links"),t=document.querySelector(".menu-icon i");e&&e.classList.remove("active"),t&&(t.classList.remove("fa-xmark"),t.classList.add("fa-bars"))})});
+if (contactForm) {
+    contactForm.addEventListener("submit", async e => {
+        e.preventDefault();
+        let t = formStatus,
+            n = new FormData(e.target),
+            s = Object.fromEntries(n.entries()),
+            a = e.target.querySelector('button[type="submit"]'),
+            i = a.innerHTML;
+        t.innerHTML = "Sending...", t.style.display = "block", t.className = "form-status", a.disabled = !0, a.innerHTML = 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
+        try {
+            let r = await fetch(e.target.action, {
+                method: "POST",
+                body: JSON.stringify(s),
+                headers: {
+                    Accept: "application/json"
+                }
+            });
+            if (r.ok) {
+                t.innerHTML = "Thanks! Your message has been sent.", t.className = "form-status success", e.target.reset();
+            } else {
+                let l = await r.json();
+                Object.hasOwn(l, "errors") ? t.innerHTML = l.errors.map(e => e.message).join(", ") : (t.innerHTML = "Oops! There was a problem sending your message.", t.className = "form-status error")
+            }
+        } catch (o) {
+            t.innerHTML = "Something went wrong. Please try again.", t.className = "form-status error"
+        } finally {
+            a.innerHTML = i, a.disabled = !1, setTimeout(() => {
+                t.style.display = "none", t.className = "form-status"
+            }, 5000)
+        }
+    });
+}
+
+// Mobile Menu Handling
+document.addEventListener("DOMContentLoaded", () => {
+    let e = document.getElementById("menu-icon"),
+        t = document.querySelector(".nav-links"),
+        n = document.querySelectorAll(".nav-links li a"),
+        s = e ? e.querySelector("i") : null;
+    if (e && t) {
+        e.addEventListener("click", () => {
+            t.classList.toggle("active");
+            if (t.classList.contains("active")) {
+                s.classList.remove("fa-bars");
+                s.classList.add("fa-xmark");
+            } else {
+                s.classList.remove("fa-xmark");
+                s.classList.add("fa-bars");
+            }
+        });
+        n.forEach(e => {
+            e.addEventListener("click", () => {
+                t.classList.remove("active");
+                if (s) {
+                    s.classList.remove("fa-xmark");
+                    s.classList.add("fa-bars");
+                }
+            })
+        });
+    }
+});
+
+// Active Link Highlight
+const navLinksItems = document.querySelectorAll(".nav-links li a");
+navLinksItems.forEach(e => {
+    e.addEventListener("click", function() {
+        navLinksItems.forEach(e => e.classList.remove("active")), this.classList.add("active")
+    })
+});
+
+// Typing Animation
+const roles = [{
+        line1: "UI UX",
+        line2: "Designer"
+    }, {
+        line1: "Graphic",
+        line2: "Designer"
+    }],
+    roleLine1 = document.getElementById("role-line-1"),
+    roleLine2 = document.getElementById("role-line-2");
+let roleIndex = 0;
+
+function type(e, t, n) {
+    let s = 0;
+    e.textContent = "",
+        function a() {
+            s < t.length ? (e.textContent += t.charAt(s), s++, setTimeout(a, 100)) : n && n()
+        }()
+}
+
+function erase(e, t) {
+    let n = e.textContent;
+    ! function s() {
+        n.length > 0 ? (n = n.slice(0, -1), e.textContent = n, setTimeout(s, 50)) : t && t()
+    }()
+}
+
+function animateText() {
+    if (roleLine1 && roleLine2) {
+        erase(roleLine2, () => {
+            erase(roleLine1, () => {
+                roleIndex = (roleIndex + 1) % roles.length;
+                let e = roles[roleIndex];
+                type(roleLine1, e.line1, () => {
+                    type(roleLine2, e.line2, () => {
+                        setTimeout(animateText, 2000)
+                    })
+                })
+            })
+        })
+    }
+}
+
+// *** SPEED FIX: Changed 'load' to 'DOMContentLoaded' ***
+window.addEventListener("DOMContentLoaded", () => {
+    let e = document.querySelector(".preloader");
+    if (e) {
+        e.classList.add("hidden");
+        setTimeout(() => e.style.display = "none", 1000);
+    }
+    setTimeout(animateText, 2000);
+});
+
+// *** VISIBILITY FIX: Corrected selectors for scroll animations ***
+const observer = new IntersectionObserver(e => {
+    e.forEach(e => {
+        e.isIntersecting ? e.target.classList.add("show-animation") : e.target.classList.remove("show-animation")
+    })
+});
+
+// Contact-info and Contact-form added here so they become visible
+const hiddenElements = document.querySelectorAll(".about-image-box, .about-card, .project-card, .skill-card, .contact-info, .contact-form");
+hiddenElements.forEach(e => observer.observe(e));
+
+// Spline Performance Optimization (From original code)
+const splinePerformanceObserver = new IntersectionObserver(e => {
+    e.forEach(e => {
+        let t = document.getElementById("main-spline");
+        t && (e.isIntersecting ? t.style.visibility = "visible" : t.style.visibility = "hidden")
+    })
+}, {
+    threshold: 0
+});
+const homeSectionForPerf = document.getElementById("home");
+homeSectionForPerf && splinePerformanceObserver.observe(homeSectionForPerf);
