@@ -1725,7 +1725,7 @@ section#home::after {
     section#home {
         background-image: url('fffff.png');
         background-position: center 80%;
-        background-size: 200%;
+        background-size: 300%;
         background-repeat: no-repeat;
         overflow: visible !important;
         z-index: 1
@@ -1740,7 +1740,7 @@ section#home::after {
         height: 100%;
         pointer-events: none;
         background: linear-gradient(to bottom, #000 0, #000 35%, transparent 50%, transparent 75%, #000 95%, #000 100%);
-        z-index: 2
+        z-index: 5
     }
 
     .hero-text.left {
@@ -1796,7 +1796,7 @@ section#home::after {
     .about-container,
     .contact-wrapper {
         flex-direction: column;
-        padding-top: 40px
+        padding-top: 0px
     }
 
     .about-image-box {
