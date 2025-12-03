@@ -848,6 +848,7 @@ spline-viewer {
     }
 }
 
+/* Preloader Styles */
 .preloader {
     position: fixed;
     top: 0;
@@ -856,7 +857,276 @@ spline-viewer {
     height: 100%;
     background-color: #000;
     z-index: 9999;
-    transition: opacity .8s ease-out, visibility .8s ease-out
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+}
+
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.loading-logo {
+    width: 80px; /* Logo එකේ ප්‍රමාණය */
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(139, 112, 219, 0.3);
+    border-top: 4px solid #8b70db; /* ඔයාගේ දම් පාට Theme එක */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* =========================================
+   CINEMATIC BLUR REVEAL + DELAYED LOADING BAR
+   ========================================= */
+/* =========================================
+   PREMIUM BRAND REVEAL (Official & Glow)
+   ========================================= */
+/* =========================================
+   "THE POWER-UP" (Logo charges with the bar)
+   ========================================= */
+/* =========================================
+   PERFECT SYNC: SCANNER WIPE + LOADING BAR
+   ========================================= */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+}
+
+.loader-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px; 
+}
+
+/* --- LOGO STYLES --- */
+.loading-logo {
+    width: 150px; 
+    height: auto;
+    object-fit: contain;
+    
+    filter: grayscale(100%);
+    opacity: 0.5; 
+    
+    /* MASK SETTINGS */
+    -webkit-mask-image: linear-gradient(to right, black 50%, transparent 50%);
+    mask-image: linear-gradient(to right, black 50%, transparent 50%);
+    -webkit-mask-size: 200% 100%;
+    mask-size: 200% 100%;
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+    
+    /* SYNC ANIMATION: තත්පර 4ක් දැම්මා (Slow Wipe) */
+    /* ease-out දැම්මම අග හරියෙදි පොඩ්ඩක් ස්මූත් වෙනවා */
+    animation: wipeReveal 4s ease-out forwards;
+}
+
+/* --- LOADING BAR STYLES --- */
+.loading-bar-container {
+    width: 250px; 
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    opacity: 0;
+    /* Container එක පේන්න ගන්න ඇනිමේෂන් එක */
+    animation: fadeInBar 0.5s ease-out forwards;
+}
+
+.loading-bar {
+    width: 0%;
+    height: 100%;
+    
+    /* දම් පාට Gradient */
+    background: linear-gradient(90deg, #4a3684, #8b70db);
+    box-shadow: 0 0 10px rgba(139, 112, 219, 0.7);
+    
+    /* SYNC ANIMATION: ලෝගෝ එක වගේම තත්පර 4ක් (4s) දැම්මා */
+    animation: fillBar 4s ease-out forwards;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* --- ANIMATIONS --- */
+
+@keyframes wipeReveal {
+    0% {
+        -webkit-mask-position: 100% 0;
+        filter: grayscale(100%);
+        opacity: 0.5;
+    }
+    100% {
+        -webkit-mask-position: 0% 0;
+        filter: grayscale(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInBar {
+    to { opacity: 1; }
+}
+
+@keyframes fillBar {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+@media (max-width: 768px) {
+    .loading-logo, .loading-bar-container {
+        width: 200px;
+    }
+}
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* --- ANIMATIONS --- */
+
+/* 1. ලෝගෝ එක Charge වීම (අඳුරු තැන සිට දීප්තිමත් තැනට) */
+@keyframes chargeLogo {
+    0% {
+        opacity: 0.3;
+        filter: blur(2px) drop-shadow(0 0 0px rgba(139, 112, 219, 0));
+        transform: scale(0.98);
+    }
+    100% {
+        opacity: 1; /* සම්පූර්ණ පෙනුම */
+        filter: blur(0px) drop-shadow(0 0 15px rgba(139, 112, 219, 0.6)); /* දම් පාට Glow එකක් වටේට හැදෙනවා */
+        transform: scale(1);
+    }
+}
+
+/* 2. බාර් එක පිරෙන එක */
+@keyframes fillBar {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* 3. Container එක මතු වීම */
+@keyframes fadeInContainer {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .loading-logo, .loading-bar-container {
+        width: 200px;
+    }
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* --- ANIMATIONS --- */
+
+/* 1. ලෝගෝ එක මතු වීම */
+@keyframes cinematicFocus {
+    0% {
+        opacity: 0;
+        filter: blur(15px);
+        transform: scale(1.05); /* පොඩ්ඩක් Zoom වෙලා පටන් ගන්නේ */
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0px);
+        transform: scale(1);
+    }
+}
+
+/* 2. ලෝගෝ එකේ Text එක දම් පාටින් දිලිසීම */
+@keyframes subtleGlow {
+    0%, 100% { filter: drop-shadow(0 0 0px rgba(139, 112, 219, 0)); }
+    50% { filter: drop-shadow(0 0 8px rgba(139, 112, 219, 0.5)); }
+}
+
+/* 3. බාර් එක මතු වීම */
+@keyframes fadeInBar {
+    to { opacity: 1; }
+}
+
+/* 4. බාර් එක පිරෙන එක (Smooth Speed) */
+@keyframes fillBar {
+    0% { width: 0%; }
+    50% { width: 60%; } /* මැදදී ටිකක් වේගවත් */
+    100% { width: 100%; }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .loading-logo {
+        width: 180px; /* ෆෝන් වලට ගානට */
+    }
+    .loading-bar-container {
+        width: 180px;
+    }
+}
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* --- ANIMATIONS --- */
+
+/* 1. ලෝගෝ එක බොඳ වී පැහැදිලි වීම (NO PULSE) */
+@keyframes cinematicFocus {
+    0% {
+        opacity: 0;
+        filter: blur(20px); /* ගොඩක් බොඳයි */
+        transform: scale(1.1); /* පොඩ්ඩක් Zoom වෙලා පටන් ගන්නේ */
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0px); /* පැහැදිලියි */
+        transform: scale(1); /* නියම සයිස් එකට එනවා */
+    }
+}
+
+/* 2. බාර් එක මතු වීම (Fade In) */
+@keyframes fadeInBar {
+    to { opacity: 1; }
+}
+
+/* 3. බාර් එක පිරීගෙන යාම */
+@keyframes fillBar {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .loading-logo {
+        width: 180px; /* ෆෝන් එකට තවත් පොඩි කළා */
+    }
+    .loading-bar-container {
+        width: 180px;
+    }
 }
 
 .preloader.hidden {

@@ -35,35 +35,6 @@ if (contactForm) {
     });
 }
 
-// Mobile Menu Handling
-document.addEventListener("DOMContentLoaded", () => {
-    let e = document.getElementById("menu-icon"),
-        t = document.querySelector(".nav-links"),
-        n = document.querySelectorAll(".nav-links li a"),
-        s = e ? e.querySelector("i") : null;
-    if (e && t) {
-        e.addEventListener("click", () => {
-            t.classList.toggle("active");
-            if (t.classList.contains("active")) {
-                s.classList.remove("fa-bars");
-                s.classList.add("fa-xmark");
-            } else {
-                s.classList.remove("fa-xmark");
-                s.classList.add("fa-bars");
-            }
-        });
-        n.forEach(e => {
-            e.addEventListener("click", () => {
-                t.classList.remove("active");
-                if (s) {
-                    s.classList.remove("fa-xmark");
-                    s.classList.add("fa-bars");
-                }
-            })
-        });
-    }
-});
-
 // Active Link Highlight
 const navLinksItems = document.querySelectorAll(".nav-links li a");
 navLinksItems.forEach(e => {
@@ -115,16 +86,6 @@ function animateText() {
     }
 }
 
-// Speed Optimization: Hides preloader quickly
-window.addEventListener("DOMContentLoaded", () => {
-    let e = document.querySelector(".preloader");
-    if (e) {
-        e.classList.add("hidden");
-        setTimeout(() => e.style.display = "none", 1000);
-    }
-    setTimeout(animateText, 2000);
-});
-
 // Scroll Animations
 const observer = new IntersectionObserver(e => {
     e.forEach(e => {
@@ -136,14 +97,67 @@ const hiddenElements = document.querySelectorAll(".about-image-box, .about-card,
 hiddenElements.forEach(e => observer.observe(e));
 
 // ==========================================
-// NEW: Spline White Box / Crash Fix
+// UNIFIED INITIALIZATION (Fixes conflicts)
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Mobile Menu Handling Logic (Retained from original code)
+    let e = document.getElementById("menu-icon"), // menu-icon
+        t = document.querySelector(".nav-links"), // nav-links
+        n = document.querySelectorAll(".nav-links li a"), // nav link items
+        s = e ? e.querySelector("i") : null; // menu icon <i>
+
+    if (e && t) {
+        e.addEventListener("click", () => {
+            t.classList.toggle("active");
+            if (t.classList.contains("active")) {
+                s.classList.remove("fa-bars");
+                s.classList.add("fa-xmark");
+            } else {
+                s.classList.remove("fa-xmark");
+                s.classList.add("fa-bars");
+            }
+        });
+        n.forEach(e => {
+            e.addEventListener("click", () => {
+                t.classList.remove("active");
+                if (s) {
+                    s.classList.remove("fa-xmark");
+                    s.classList.add("fa-bars");
+                }
+            })
+        });
+    }
+
+    // 2. Preloader Removal Logic (Fixed 30-second delay)
+    const preloader = document.getElementById("preloader");
+
+    if (preloader) {
+        // Enforce the 30-second (30000ms) delay
+        setTimeout(() => {
+            preloader.classList.add("hidden");
+            
+            // Wait 1 second for the CSS fade-out transition
+            setTimeout(() => {
+                preloader.style.display = "none";
+            }, 1000);
+
+            // Start Text Typing Animation after preloader is gone
+            if (typeof animateText === "function") {
+                animateText();
+            }
+        }, 5000); // <-- The new, required 30-second delay.
+    } else {
+        // If preloader element is missing, start animation instantly
+        animateText();
+    }
+});
+
+// ==========================================
+// Spline White Box / Crash Fix
 // ==========================================
 const splineElement = document.getElementById("main-spline");
 
 if (splineElement) {
-    // Spline එක load වී අවසන් වූ විට පමණක් එය පෙන්වන්න
-    // Crash වුවහොත් හෝ Load නොවුනහොත් මෙය ක්‍රියාත්මක නොවන නිසා 
-    // Element එක දිගටම හැංගිලා (Opacity 0) තියෙයි.
     splineElement.addEventListener("load-complete", (e) => {
         splineElement.style.opacity = "1";
     });
