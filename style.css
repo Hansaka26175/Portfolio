@@ -273,7 +273,7 @@ spline-viewer {
 @media (min-width:1024px) {
 
     .profile-photo,
-    spline-viewer {
+spline-viewer {
         display: block !important;
         position: absolute
     }
@@ -284,6 +284,9 @@ spline-viewer {
         width: 100%;
         height: 100%;
         z-index: 1;
+        /* opacity 0 කිරීම මගින් load වනතුරු කොටුව නොපෙනී තිබේ */
+        opacity: 0; 
+        transition: opacity 1s ease-in-out; /* Smooth transition එකක් */
         pointer-events: none !important;
         clip-path: inset(0 0 50px 0);
         will-change: transform;

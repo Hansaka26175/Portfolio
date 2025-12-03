@@ -134,3 +134,17 @@ const observer = new IntersectionObserver(e => {
 
 const hiddenElements = document.querySelectorAll(".about-image-box, .about-card, .project-card, .skill-card, .contact-info, .contact-form");
 hiddenElements.forEach(e => observer.observe(e));
+
+// ==========================================
+// NEW: Spline White Box / Crash Fix
+// ==========================================
+const splineElement = document.getElementById("main-spline");
+
+if (splineElement) {
+    // Spline එක load වී අවසන් වූ විට පමණක් එය පෙන්වන්න
+    // Crash වුවහොත් හෝ Load නොවුනහොත් මෙය ක්‍රියාත්මක නොවන නිසා 
+    // Element එක දිගටම හැංගිලා (Opacity 0) තියෙයි.
+    splineElement.addEventListener("load-complete", (e) => {
+        splineElement.style.opacity = "1";
+    });
+}
