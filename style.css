@@ -1654,4 +1654,6 @@ section#home::after {
     .nav-links li:last-child {
         display: none
     }
+}.footer p {
+    line-height: 1.2; /* මේක අඩු කළාම "Reserved" උඩට ලං වෙනවා */
 }
