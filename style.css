@@ -67,7 +67,7 @@ header {
     border-bottom: 1px solid rgba(255, 255, 255, .075);
     box-shadow: 0 4px 30px rgba(0, 0, 0, .297);
     opacity: 0;
-    animation: 1s ease-out .5s forwards slideDown
+    animation: 1s ease-out 4.5s forwards slideDown;
 }
 
 .contact-btn,
@@ -760,33 +760,33 @@ spline-viewer {
 }
 
 .hero-text.left .text-mask:first-child span {
-    animation-delay: .2s
+    animation-delay: 4.4s
 }
 
 .hero-text.left .text-mask:nth-child(2) h1 {
-    animation-delay: .4s
+    animation-delay: 4.6s
 }
 
 .hero-text.left .text-mask:nth-child(3) h1 {
-    animation-delay: .6s
+    animation-delay: 4.8s
 }
 
 .hero-text.left .text-mask:nth-child(4) .hero-description,
 .hero-text.right .text-mask:first-child span {
-    animation-delay: .8s
+    animation-delay: 5s
 }
 
 .hero-text.left .text-mask:nth-child(5) .cv-button,
 .hero-text.right .text-mask:nth-child(2) h2 {
-    animation-delay: 1s
+    animation-delay: 5.2s
 }
 
 .hero-text.left .text-mask:nth-child(5) {
-    animation: .1s 2s forwards reveal-overflow
+    animation: 4.3s 6.2s forwards reveal-overflow
 }
 
 .hero-text.right .text-mask:nth-child(3) h2 {
-    animation-delay: 1.2s
+    animation-delay: 5.4s
 }
 
 @keyframes slideUp {
@@ -903,7 +903,7 @@ spline-viewer {
     width: 100%;
     height: 100%;
     background-color: #000;
-    z-index: 9999;
+    z-index: 999999;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -943,7 +943,7 @@ spline-viewer {
 
 /* --- LOADING BAR STYLES --- */
 .loading-bar-container {
-    width: 250px; 
+    width: 200px; 
     height: 2px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
@@ -1605,7 +1605,11 @@ section#home::after {
         align-items: center;
         flex-shrink: 0;
         -webkit-transform: none !important;
+        opacity: 0; 
+        /* Preloader එක 4s නිසා මෙතන delay එක 4.2s වගේ දුන්නම smooth එකට එයි */
+        animation: 1s ease-out 4.2s forwards slideDown !important;
         will-change: auto !important
+        
     }
 
     .logo img {
