@@ -115,7 +115,7 @@ function animateText() {
     }
 }
 
-// *** SPEED FIX: Changed 'load' to 'DOMContentLoaded' ***
+// Speed Optimization: Hides preloader quickly
 window.addEventListener("DOMContentLoaded", () => {
     let e = document.querySelector(".preloader");
     if (e) {
@@ -125,25 +125,12 @@ window.addEventListener("DOMContentLoaded", () => {
     setTimeout(animateText, 2000);
 });
 
-// *** VISIBILITY FIX: Corrected selectors for scroll animations ***
+// Scroll Animations
 const observer = new IntersectionObserver(e => {
     e.forEach(e => {
         e.isIntersecting ? e.target.classList.add("show-animation") : e.target.classList.remove("show-animation")
     })
 });
 
-// Contact-info and Contact-form added here so they become visible
 const hiddenElements = document.querySelectorAll(".about-image-box, .about-card, .project-card, .skill-card, .contact-info, .contact-form");
 hiddenElements.forEach(e => observer.observe(e));
-
-// Spline Performance Optimization (From original code)
-const splinePerformanceObserver = new IntersectionObserver(e => {
-    e.forEach(e => {
-        let t = document.getElementById("main-spline");
-        t && (e.isIntersecting ? t.style.visibility = "visible" : t.style.visibility = "hidden")
-    })
-}, {
-    threshold: 0
-});
-const homeSectionForPerf = document.getElementById("home");
-homeSectionForPerf && splinePerformanceObserver.observe(homeSectionForPerf);
