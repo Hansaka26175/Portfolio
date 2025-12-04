@@ -93,8 +93,9 @@ const observer = new IntersectionObserver(e => {
     })
 });
 
-const hiddenElements = document.querySelectorAll(".about-image-box, .about-card, .project-card, .skill-card, .contact-info, .contact-form");
-hiddenElements.forEach(e => observer.observe(e));
+/* Updated hiddenElements to include timeline-item */
+const hiddenElements = document.querySelectorAll('.about-image-box, .about-card, .project-card, .skill-card, .contact-info, .contact-form, .timeline-item');
+hiddenElements.forEach((el) => observer.observe(el));
 
 // ==========================================
 // UNIFIED INITIALIZATION (Fixes conflicts)

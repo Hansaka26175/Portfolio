@@ -1934,3 +1934,287 @@ section#home::after {
 }.footer p {
     line-height: 1.2; /* මේක අඩු කළාම "Reserved" උඩට ලං වෙනවා */
 }
+/* =========================================
+   EDUCATION SECTION (NEW STYLES)
+   ========================================= */
+.education-section {
+    min-height: 80vh;
+    padding: 50px 5% 100px;
+    background-color: #000;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    overflow: hidden;
+}
+
+/* Background Effects */
+.education-section::before {
+    content: '';
+    position: absolute;
+    top: -10px; left: -10px; right: -10px; bottom: -10px;
+    background-image: url('sasthara.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px) brightness(0.6);
+    z-index: -2;
+}
+
+.education-section::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        linear-gradient(to bottom, #000 0%, transparent 15%), 
+        linear-gradient(to top, #000 0%, transparent 15%),
+        radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 30px 30px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.education-container {
+    max-width: 800px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/* Timeline Structure */
+.timeline {
+    position: relative;
+    margin-top: 50px;
+    padding-left: 30px;
+    border-left: 2px solid rgba(139, 112, 219, 0.3);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.6s ease-out;
+}
+
+/* Scroll Animation Trigger */
+.timeline-item.show-animation {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -36px;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    background: #8b70db;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(139, 112, 219, 0.8);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.5);
+    background: #fff;
+}
+
+.timeline-content {
+    background: rgba(12, 5, 30, 0.5);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    border-color: rgba(139, 112, 219, 0.5);
+    background: rgba(12, 5, 30, 0.7);
+}
+
+.timeline-content h3 {
+    margin: 0 0 5px 0;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.timeline-content span {
+    display: block;
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+
+.timeline-content .date {
+    color: #8b70db;
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.timeline-content p {
+    margin: 0;
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .education-section {
+        padding-top: 100px !important;
+    }
+    .timeline {
+        padding-left: 20px;
+    }
+    .timeline-dot {
+        left: -27px;
+    }
+}
+/* =========================================
+   EDUCATION SECTION (NEW STYLES)
+   ========================================= */
+.education-section {
+    min-height: 80vh;
+    padding: 50px 5% 100px;
+    background-color: #000;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    overflow: hidden;
+}
+
+/* Background Effects */
+.education-section::before {
+    content: '';
+    position: absolute;
+    top: -10px; left: -10px; right: -10px; bottom: -10px;
+    background-image: url('sasthara.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px) brightness(0.6);
+    z-index: -2;
+}
+
+.education-section::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        linear-gradient(to bottom, #000 0%, transparent 15%), 
+        linear-gradient(to top, #000 0%, transparent 15%),
+        radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 30px 30px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.education-container {
+    max-width: 800px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/* Timeline Structure */
+.timeline {
+    position: relative;
+    margin-top: 50px;
+    padding-left: 30px;
+    border-left: 2px solid rgba(139, 112, 219, 0.3);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.6s ease-out;
+}
+
+/* Scroll Animation Trigger */
+.timeline-item.show-animation {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -36px;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    background: #8b70db;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(139, 112, 219, 0.8);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.5);
+    background: #fff;
+}
+
+.timeline-content {
+    background: rgba(12, 5, 30, 0.5);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    border-color: rgba(139, 112, 219, 0.5);
+    background: rgba(12, 5, 30, 0.7);
+}
+
+.timeline-content h3 {
+    margin: 0 0 5px 0;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.timeline-content span {
+    display: block;
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+
+.timeline-content .date {
+    color: #8b70db;
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.timeline-content p {
+    margin: 0;
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .education-section {
+        padding-top: 100px !important;
+    }
+    .timeline {
+        padding-left: 20px;
+    }
+    .timeline-dot {
+        left: -27px;
+    }
+}
